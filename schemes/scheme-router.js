@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Schemes = require('./scheme-model.js');
+const Schemes = require('./scheme-model')
 
 const router = express.Router();
 
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
 router.post('/:id/steps', (req, res) => {
   const stepData = req.body;
   const { id } = req.params; 
-
+stepData.scheme_id = req.params.id
   Schemes.findById(id)
   .then(scheme => {
     if (scheme) {
